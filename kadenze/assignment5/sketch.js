@@ -1,10 +1,31 @@
-function setup() {
-    createCanvas(500, 500);
+//non-linear narrative
+// Alice excersise
+var intro;
+var drink;
+var large;
+var swimming;
+/* 
+    0 = intro
+    1 = drink
+    2 = large
+    3 = swimming
+*/
+
+var state = 0;
+
+
+function preload() {
+    intro = loadImage("img/0_intro.gif");
+    drink = loadImage("1_drink.jpg");
+    large = loadImage("2_large.gif");
+    swimming = loadImage("3_swimming.jpg");
 }
+
+function setup() {
+    createCanvas(1024, 768);
+}
+
 function draw() {
-    for(var x = 0; x <= width; x+=50) {
-        for(var y = 0; y <= width; y+=50) {
-            ellipse(x, y, 50, 50); 
-        }
-    }
+    background(0);
+    image(intro, 0, 0);
 }
