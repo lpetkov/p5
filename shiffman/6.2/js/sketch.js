@@ -11,14 +11,18 @@ function setup() {
 
 function draw() {
     background(0);
-    // move();
-    // show();
+    bubble.move();
+    bubble.show();
 }
 
 class Bubble {
     constructor() {
         this.x = 200;
         this.y = 150;
+    }
+    move() {
+        this.x = this.x + random(-5, 5);
+        this.y = this.y + random(-5, 5);
     }
 }
 
