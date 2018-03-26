@@ -21,18 +21,12 @@ function setup() {
 //     bubbles.push(b);
 // }
 
-function mousePressed() {
-    for (let i = 0; i < bubbles.length; i++){
-        bubbles[i].clicked(mouseX, mouseY);
-    }
-}
-
 function draw() {
     background(0);
     for (let i = 0; i < bubbles.length; i++){
+        bubbles[i].contains(mouseX, mouseY);
        bubbles[i].move();
        bubbles[i].show();
-       bubbles[i].hovered(mouseX, mouseY);
     }
 }
 
@@ -44,6 +38,19 @@ class Bubble {
         this.r = r;
         this.brightness = 0;
         this.strokeValue = 2;
+    }
+
+    changeColor() {
+        this.brightness = 255;
+    }
+
+    contains(px, py) {
+        let d = dist(px, py) 
+        if (d < this.r) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     move() {
@@ -62,22 +69,5 @@ class Bubble {
         background(55, 0, 0);
     }
 
-    hovered(px, py) {
-        let d = dist(px, py, this.x, this.y);
-        if (d < this.r && this.brightness != 125) {
-           this.strokeValue = 0;
-        } else {
-            this.strokeValue = 2;
-        }
-    }
-
-    clicked(px, py) {
-        let d = dist(px, py, this.x, this.y);
-        if (d < this.r && this.brightness < 255 ) {
-            this.brightness = 255;
-        } else {
-            this.brightness = 0;
-        }
-    }
 
 }
